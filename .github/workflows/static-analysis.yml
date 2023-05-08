@@ -14,7 +14,7 @@ jobs:
   static-analysis:
     name: Static analysis
     runs-on: ubuntu-latest
-    if: contains(github.event.pull_request.labels.*.name, 'static-analysis')
+    if: github.event.action == 'push' || contains(github.event.pull_request.labels.*.name, 'static-analysis')
     steps:
       - uses: actions/checkout@v3
         with:
